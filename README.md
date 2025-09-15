@@ -116,6 +116,16 @@ Since this is a **full-stack project**, the following technologies can be used:
      | (Geo, Sessions) |
      +-----------------+
 
+
 ---
-<img width="1507" height="583" alt="system architecture" src="https://github.com/user-attachments/assets/67d96a94-58b0-4b4d-ab97-4f66fbb3c50d" />
+## Handling Inconsistencies
+
+Since this system involves multiple services, caches, and databases, the following measures ensure consistency:
+
+- **Database Constraints & Transactions** – unique aliases enforced at DB level, atomic trip creation with route data.  
+- **Event-Driven Updates** – publish/consume events (e.g., `trip_cancelled`) so all services stay in sync.  
+- **Cache Invalidation & TTL** – Redis entries expire automatically; caches cleared on trip or match updates.  
+- **Idempotent APIs** – repeated calls (e.g., cancel/accept) always result in the same final state.  
+- **Chat–Match Sync** – chat rooms only created after mutual acceptance, auto-deleted if match is cancelled.  
+- **Background Jobs** – scheduled tasks reconcile DB and cache, remove expired trips, and clean dangling chat rooms.  
 
