@@ -69,55 +69,7 @@ Since this is a **full-stack project**, the following technologies can be used:
 - **User Verification** – email/OTP login for secure onboarding  
 
 ---
-## 🏗️ System Architecture (High-Level)
 
-          +-------------------+
-          |   🌐 Frontend     |
-          | React.js / RN     |
-          | (Map + Chat UI)   |
-          +---------+---------+
-                    |
-                    v
-          +-------------------+
-          |  API Gateway /    |
-          |   NGINX / LB      |
-          +--+---+---+---+---+
-             |   |   |   |
- ------------+   |   |   +------------
-             |   |   |
-             v   v   v
-    +--------+  +--------+   +--------+
-    | Auth   |  | Trip   |   | Match  |
-    | Service|  | Service|   | Service|
-    +--------+  +--------+   +--------+
-         |           |            |
-         |           |            |
-         v           v            v
-    +--------------------------------+
-    |    PostgreSQL + PostGIS        |
-    | (Users, Trips, Routes, Matches)|
-    +--------------------------------+
-                  ^
-                  |
-           +-------------+
-           |  Routing    |
-           | Engine      |
-           | (OSRM/Maps) |
-           +-------------+
-
-    +--------------------+
-    |   Chat Service     |
-    | (Socket.IO / WS)   |
-    +--------------------+
-             |
-             v
-     +-----------------+
-     |   Redis Cache   |
-     | (Geo, Sessions) |
-     +-----------------+
-
-
----
 ## Handling Inconsistencies
 
 Since this system involves multiple services, caches, and databases, the following measures ensure consistency:
