@@ -127,5 +127,9 @@ Since this system involves multiple services, caches, and databases, the followi
 - **Cache Invalidation & TTL** – Redis entries expire automatically; caches cleared on trip or match updates.  
 - **Idempotent APIs** – repeated calls (e.g., cancel/accept) always result in the same final state.  
 - **Chat–Match Sync** – chat rooms only created after mutual acceptance, auto-deleted if match is cancelled.  
-- **Background Jobs** – scheduled tasks reconcile DB and cache, remove expired trips, and clean dangling chat rooms.  
+- **Background Jobs** – scheduled tasks reconcile DB and cache, remove expired trips, and clean dangling chat rooms.
+
+---
+
+  
 
